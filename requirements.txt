@@ -3,7 +3,7 @@ streamlit==0.52.1
 pillow
 keras
 tensorflow==2.7.0
-oogle-pasta==0.2.0
+google-pasta==0.2.0
 grpcio==1.27.2
 itsdangerous==1.1.0
 Jinja2==2.11.1
