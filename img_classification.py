@@ -14,7 +14,7 @@ def teachable_machine_classification(img, weights_file):
     image = ImageOps.fit(image, size, Image.ANTIALIAS)
 
     image_array = np.asarray(image)
-    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1)
     data[0] = normalized_image_array
 
     prediction = model.predict(data)
