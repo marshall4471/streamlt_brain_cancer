@@ -1,0 +1,7 @@
+vendor/ignore*
+ignore-me
+
+# a comment
+root/
+
+.git/*
