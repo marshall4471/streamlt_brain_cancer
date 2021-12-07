@@ -1,7 +1,2 @@
-vendor/ignore*
-ignore-me
-
-# a comment
-root/
-
-.git/*
+.pdf
+.psd
