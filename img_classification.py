@@ -1,7 +1,7 @@
 import keras
 from PIL import Image, ImageOps
 import numpy as np
-
+from img_classification import teachable_machine_classification
 
 def teachable_machine_classification(img, weights_file):
     
