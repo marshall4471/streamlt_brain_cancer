@@ -22,7 +22,7 @@ if uploaded_file is not None:
         st.image(image, caption='Uploaded MRI.', use_column_width=True)
         st.write("Uploaded")
         st.write("Classifying...")
-        def prepare():
+        def prepare(new_image):
             IMG_SIZE=384
             img_array = cv2.imread(new_image, cv2.IMREAD_COLOR)
             new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
