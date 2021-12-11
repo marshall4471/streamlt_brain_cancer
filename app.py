@@ -13,7 +13,13 @@ model=load_model('model.h5')
 uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
 if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        new_image=cv2.imread(image)
+from io import BytesIO    
+
+        img2 = image.crop((1,20,50,80))
+
+        b = BytesIO()
+        img2.save(b,format="jpeg")
+        new_image = Image.open(b)
         st.image(image, caption='Uploaded MRI.', use_column_width=True)
         st.write("Uploaded")
         st.write("Classifying...")
