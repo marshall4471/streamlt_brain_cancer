@@ -4,6 +4,9 @@ st.header("Brain Tumor MRI Classifier")
 st.text("Upload a brain MRI Image for image classification as tumor or no-tumor")
 from img_classification import teachable_machine_classification
 from PIL import Image, ImageOps
+from tensorflow.keras.models import load_model
+import numpy as np
+model=load_model('model.h5')
 uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
 if uploaded_file is not None:
         image = Image.open(uploaded_file)
