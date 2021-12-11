@@ -8,12 +8,11 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import keras
 import cv2
-
+from io import BytesIO
 model=load_model('model.h5')
 uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
 if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-from io import BytesIO    
+        image = Image.open(uploaded_file)  
 
         img2 = image.crop((1,20,50,80))
 
