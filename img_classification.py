@@ -1,20 +1,16 @@
 import keras
 from PIL import Image, ImageOps
 import numpy as np
-
+import cv2
 def teachable_machine_classification(img, weights_file):
     
     model = keras.models.load_model(weights_file)
-
-    data = np.ndarray(shape=(1, 384, 384, 3), dtype=np.float32)
     image = img
-    
-    size = (384, 384)
-    image = ImageOps.fit(image, size, Image.ANTIALIAS)
+def prepare(image):
+     IMG_SIZE=384
+     img_array = cv2.imread(image, cv2.IMREAD_COLOR)
+     new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
+     return new_array.reshape(-1,IMG_SIZE, IMG_SIZE, 3)
 
-    image_array = np.asarray(image)
-    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-    data[0] = normalized_image_array
-
-    prediction = model.predict(data)
-    return np.argmax(prediction)
+     prediction=model.predict([prepare(image)])
+     return prediction
