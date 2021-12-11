@@ -16,7 +16,7 @@ if uploaded_file is not None:
             new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
             return new_array.reshape(-1,IMG_SIZE, IMG_SIZE, 3)
      
-            def predictions():
+            def prediction():
                 prediction=model.predict([prepare(image)])
                 return prediction
                 label = teachable_machine_classification(image, prediction, 'model.h5')
