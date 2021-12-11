@@ -6,6 +6,9 @@ from img_classification import teachable_machine_classification
 from PIL import Image, ImageOps
 from tensorflow.keras.models import load_model
 import numpy as np
+import keras
+import cv2
+model=load_model('model.h5')
 model=load_model('model.h5')
 uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
 if uploaded_file is not None:
