@@ -10,9 +10,17 @@ if uploaded_file is not None:
         st.image(image, caption='Uploaded MRI.', use_column_width=True)
         st.write("Uploaded")
         st.write("Classifying...")
-       
-        label = teachable_machine_classification(image, prediction, 'model.h5')
-        if label <= 0.5:
+        def prepare(image):
+            IMG_SIZE=384
+            img_array = cv2.imread(image, cv2.IMREAD_COLOR)
+            new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
+            return new_array.reshape(-1,IMG_SIZE, IMG_SIZE, 3)
+     
+            def predictions(prediction):
+                prediction=model.predict([prepare(image)])
+                return prediction
+                label = teachable_machine_classification(image, prediction, 'model.h5')
+        if prediction <= 0.5:
             st.write("The MRI scan detected a brain tumor")
         else:
             st.write("The MRI scan shows is healthy brain")
