@@ -20,7 +20,7 @@ if uploaded_file is not None:
         
      
             
-        prediction=model.predict(image)
+        prediction=model.predict(image2)
                 
         label = teachable_machine_classification(image, prediction, 'model.h5')
         if prediction <= 0.5:
