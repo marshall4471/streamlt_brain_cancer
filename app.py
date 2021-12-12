@@ -10,25 +10,24 @@ import numpy as np
 import keras
 import cv2
 model=load_model('model.h5')
-uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
+uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        img = load_img(image, target_size=(384,384))
-
-        img = img_to_array(img)
-
-        img = np.expand_dims(img,axis = 0)
-        st.image(img, caption='Uploaded MRI.', use_column_width=True)
-        st.write("Uploaded")
-        st.write("Classifying...")
-        
-        
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.write("")
+    st.write("Classifying...")
+    def predict(image_path): 
+        image = load_img(image_path, target_size=(384, 384))
+        image = img_to_array(image)
+        image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
+        image = preprocess_input(image)
+        yhat = model.predict(image)
+        label = decode_predictions(yhat)
      
-            
-        prediction=model.predict(image)
-                
+        label = label[0][0]
+        return label 
+        label = model.predict(uploaded_file)
+     st.write('%s (%.2f%%)' % (label[1], label[2]*100))
+   
         
-        if prediction <= 0.5:
-            st.write("The MRI scan detected a brain tumor")
-        else:
-            st.write("The MRI scan shows is healthy brain")
+        
