@@ -13,16 +13,15 @@ uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
 if uploaded_file is not None:
         img = Image.open(uploaded_file)  
         image1 = np.asarray(img)
-        image2 = image1.reshape((384,383,-1))
         st.image(img, caption='Uploaded MRI.', use_column_width=True)
         st.write("Uploaded")
         st.write("Classifying...")
         
      
             
-        prediction=model.predict(image2)
+        prediction=model.predict(image1)
                 
-        label = teachable_machine_classification(img, 'model.h5')
+        label = teachable_machine_classification(image1, 'model.h5')
         if label <= 0.5:
             st.write("The MRI scan detected a brain tumor")
         else:
