@@ -1,6 +1,7 @@
 from PIL import Image
 from keras.preprocessing.image import load_img,img_to_array
 import numpy as np
+import keras
 from keras.models import load_model
 from PIL import Image, ImageOps
 def teachable_machine_classification(img, weights_file):
