@@ -11,8 +11,8 @@ import cv2
 model=load_model('model.h5')
 uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
 if uploaded_file is not None:
-        img = Image.open(uploaded_file)
-        img = load_img(img_path, target_size=(331,331))
+        image = Image.open(uploaded_file)
+        img = load_img(image, target_size=(384,384))
 
         img = img_to_array(img)
 
