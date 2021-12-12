@@ -22,8 +22,8 @@ if uploaded_file is not None:
             
         prediction=model.predict(image2)
                 
-        label = teachable_machine_classification(image, prediction, 'model.h5')
-        if prediction <= 0.5:
+        label = teachable_machine_classification(img, 'model.h5')
+        if label <= 0.5:
             st.write("The MRI scan detected a brain tumor")
         else:
             st.write("The MRI scan shows is healthy brain")
