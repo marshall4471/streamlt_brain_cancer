@@ -11,7 +11,7 @@ model=load_model('model.h5')
 uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
 if uploaded_file is not None:
         image = Image.open(uploaded_file)  
-        
+        img = np.asarray(image)
         st.image(image, caption='Uploaded MRI.', use_column_width=True)
         st.write("Uploaded")
         st.write("Classifying...")
