@@ -28,9 +28,9 @@ if uploaded_file is not None:
         return label 
         label = model.predict(uploaded_file)
         if label <= 0.5:
-           print("The MRI scan has a brain tumor")
+           st.write("The MRI scan has a brain tumor")
         else:
-           print("The MRI scan is healthy")
+           st.write("The MRI scan is healthy")
    
         
         
