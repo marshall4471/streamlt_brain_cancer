@@ -13,7 +13,7 @@ uploaded_file = st.file_uploader("Choose a brain MRI ...", type="jpg")
 if uploaded_file is not None:
         img = Image.open(uploaded_file)  
         image1 = np.asarray(img)
-        image2 = image1.reshape(1,384,383,3)
+        image2 = image1.reshape((384,383,-1))
         st.image(img, caption='Uploaded MRI.', use_column_width=True)
         st.write("Uploaded")
         st.write("Classifying...")
