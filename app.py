@@ -17,10 +17,9 @@ def predict(image_path):
         image = preprocess_input(image)
         yhat = model.predict(image)
         label = decode_predictions(yhat)
-     
         label = label[0][0]
         return label 
-        label = model.predict(uploaded_file)
+     
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
@@ -28,6 +27,7 @@ if uploaded_file is not None:
     st.write("Classifying...")
     
     st.write("")
+    label= predict(image)
     if label <= 0.5:
        st.write("The MRI scan detects a brain tumor")
     else:
