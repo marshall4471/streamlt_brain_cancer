@@ -24,4 +24,4 @@ def teachable_machine_classification(img, weights_file):
     data = normalized_image_array
 
     prediction = model.predict(data)
-    return prediction
+    return np.argmax(prediction)
