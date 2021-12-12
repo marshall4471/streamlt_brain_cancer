@@ -10,12 +10,7 @@ import numpy as np
 import keras
 import cv2
 model=load_model('model.h5')
-uploaded_file = st.file_uploader("Choose an image...", type="jpg")
-if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image.', use_column_width=True)
-    st.write("Classifying...")
-    def predict(image_path): 
+def predict(image_path): 
         image = load_img(image_path, target_size=(384, 384))
         image = img_to_array(image)
         image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
@@ -26,11 +21,17 @@ if uploaded_file is not None:
         label = label[0][0]
         return label 
         label = model.predict(uploaded_file)
-        st.write("")
-        if label <= 0.5:
-           st.write("The MRI scan has a brain tumor")
-        else:
-           st.write("The MRI scan is healthy")
+uploaded_file = st.file_uploader("Choose an image...", type="jpg")
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.write("Classifying...")
+    
+    st.write("")
+    if label <= 0.5:
+       st.write("The MRI scan detects a brain tumor")
+    else:
+       st.write("The MRI scan shows an healthy brain")
    
         
         
