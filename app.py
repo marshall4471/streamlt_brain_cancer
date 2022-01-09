@@ -1,14 +1,13 @@
 import streamlit as st
-st.title("Brain Tumor or Healthy Brain")
-st.header("Brain Tumor MRI Classifier")
-st.text("Upload a brain MRI Image for image classification as tumor or Healthy Brain")
 from img_classification import teachable_machine_classification
 from PIL import Image, ImageOps
 from tensorflow.keras.preprocessing.image import load_img,img_to_array
 from tensorflow.keras.models import load_model
 import numpy as np
 import keras
-
+st.title("Brain Tumor or Healthy Brain")
+st.header("Brain Tumor MRI Classifier")
+st.text("Upload a brain MRI Image for image classification as tumor or Healthy Brain")
      
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg","png","jpeg"])
 if uploaded_file is not None:
