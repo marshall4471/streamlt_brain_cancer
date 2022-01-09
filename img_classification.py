@@ -21,7 +21,7 @@ def teachable_machine_classification(img, weights_file):
     normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
 
   
-    data = normalized_image_array
+    data[0} = normalized_image_array
 
     prediction = model.predict(data)
     return np.argmax(prediction)
